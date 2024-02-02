@@ -52,7 +52,7 @@ struct NumberView: View {
                     Text(number)
                 }
                 .gesture(
-                    DragGesture(minimumDistance: 30)
+                    DragGesture(minimumDistance: 10)
                         .onEnded { value in
                         if abs(value.translation.width) > abs(value.translation.height) {
                             // Horizontal swipe
