@@ -16,7 +16,7 @@ class Game: ObservableObject {
     init(_ gameSize: Int = 4) {
         self.gameSize = gameSize
         numbers = []
-        for i in 0..<(gameSize*gameSize)-1 {
+        for i in 1..<(gameSize*gameSize) {
             let number = String(i)
             numbers.append(number)
         }
@@ -24,21 +24,35 @@ class Game: ObservableObject {
         shuffle()
     }
     
-    func move(_ number: String, direction: String) -> String {
+    func move(_ number: String, direction: String) {
         let chosenIndex = index(of: number)
-        switch direction {
-        case "Left":
-            numbers.swapAt(chosenIndex, chosenIndex-1)
-        case "Right":
-            numbers.swapAt(chosenIndex, chosenIndex+1)
-        case "Up":
-            numbers.swapAt(chosenIndex, chosenIndex-gameSize)
-        case "Down":
-            numbers.swapAt(chosenIndex, chosenIndex+gameSize)
-        default:
-            print("Error at move function!")
+        if direction == "Left" {
+            if (chosenIndex-1 >= 0) && numbers[chosenIndex-1] == "" {
+                numbers.swapAt(chosenIndex, chosenIndex-1)
+                count+=1
+                result()
+            }
+        } else if direction == "Right" {
+            if (chosenIndex+1 < numbers.count) && numbers[chosenIndex+1] == "" {
+                numbers.swapAt(chosenIndex, chosenIndex+1)
+                count+=1
+                result()
+            }
+        } else if direction == "Up" {
+            if (chosenIndex-gameSize >= 0) && numbers[chosenIndex-gameSize] == "" {
+                numbers.swapAt(chosenIndex, chosenIndex-gameSize)
+                count+=1
+                result()
+            }
+        } else if direction == "Down" {
+            if (chosenIndex+gameSize < numbers.count) && numbers[chosenIndex+gameSize] == "" {
+                numbers.swapAt(chosenIndex, chosenIndex+gameSize)
+                count+=1
+                result()
+            }
+        } else {
+            print("Error on move function!")
         }
-        return result()
     }
     
     private func index(of number: String) -> Int {
@@ -54,14 +68,18 @@ class Game: ObservableObject {
         numbers.shuffle()
     }
     
-    func result() -> String {
+    func result() {
+        var check = 0
         for index in numbers.indices {
-            if numbers[index] != String(index+1) {
-                count+=1
-                return ""
+            if numbers[index] == String(index+1) {
+                check+=1
             }
         }
-        return "You Won!!!"
+        if check == numbers.count-1 {
+            theResult = "You Won!!!"
+        } else {
+            theResult = ""
+        }
     }
     
     func newGame() {

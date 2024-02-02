@@ -15,6 +15,9 @@ struct ContentView: View {
         Button("New game") {
             game.newGame()
         }
+        .font(.largeTitle)
+        .colorMultiply(.green)
+        
         LazyVGrid(columns:
             [GridItem(), GridItem(),GridItem(), GridItem()]) {
             ForEach(game.numbers, id: \.self) {number in
@@ -27,6 +30,8 @@ struct ContentView: View {
         
         Text(game.theResult)
         Text("Move: " + String(game.count))
+            .font(.largeTitle)
+            
     }
     .padding()
     }
