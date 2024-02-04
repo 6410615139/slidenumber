@@ -64,7 +64,7 @@ class Game: ObservableObject {
         return 0
     }
     
-    func shuffle(times: Int=100) {
+    func shuffle(times: Int=1000) {
         var my_times = times
         for _ in 1...my_times {
             let chosenIndex = index(of: "")
@@ -113,6 +113,7 @@ class Game: ObservableObject {
     
     func newGame() {
         self.count = 0
+        theResult = ""
         shuffle()
     }
 }
