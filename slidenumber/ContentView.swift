@@ -29,6 +29,11 @@ struct ContentView: View {
         Spacer()
         
         Text(game.theResult)
+            .font(.title3)
+            .fontWeight(.bold)
+            .foregroundColor(.green)
+            .padding()
+        
         Text("Move: " + String(game.count))
             .font(.largeTitle)
             

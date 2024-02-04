@@ -27,13 +27,13 @@ class Game: ObservableObject {
     func move(_ number: String, direction: String) {
         let chosenIndex = index(of: number)
         if direction == "Left" {
-            if (chosenIndex-1 >= 0) && numbers[chosenIndex-1] == "" {
+            if (chosenIndex-1 >= 0) && (chosenIndex % gameSize != 0) && numbers[chosenIndex-1] == "" {
                 numbers.swapAt(chosenIndex, chosenIndex-1)
                 count+=1
                 result()
             }
         } else if direction == "Right" {
-            if (chosenIndex+1 < numbers.count) && numbers[chosenIndex+1] == "" {
+            if (chosenIndex+1 < numbers.count) && (chosenIndex % gameSize != gameSize-1) && numbers[chosenIndex+1] == "" {
                 numbers.swapAt(chosenIndex, chosenIndex+1)
                 count+=1
                 result()
@@ -64,8 +64,37 @@ class Game: ObservableObject {
         return 0
     }
     
-    func shuffle() {
-        numbers.shuffle()
+    func shuffle(times: Int=100) {
+        var my_times = times
+        for _ in 1...my_times {
+            let chosenIndex = index(of: "")
+            let direction = ["Left", "Right", "Up", "Down"].randomElement()
+            if direction == "Left" {
+                if (chosenIndex % gameSize != 0) {
+                    numbers.swapAt(chosenIndex, chosenIndex-1)
+                } else {
+                    my_times+=1
+                }
+            } else if direction == "Right" {
+                if (chosenIndex % gameSize != gameSize-1) {
+                    numbers.swapAt(chosenIndex, chosenIndex+1)
+                } else {
+                    my_times+=1
+                }
+            } else if direction == "Up" {
+                if (chosenIndex-gameSize >= 0) {
+                    numbers.swapAt(chosenIndex, chosenIndex-gameSize)
+                } else {
+                    my_times+=1
+                }
+            } else if direction == "Down" {
+                if (chosenIndex+gameSize < numbers.count) {
+                    numbers.swapAt(chosenIndex, chosenIndex+gameSize)
+                } else {
+                    my_times+=1
+                }
+            }
+        }
     }
     
     func result() {
