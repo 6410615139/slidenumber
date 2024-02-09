@@ -20,11 +20,21 @@ struct ContentView: View {
         .font(.largeTitle)
         .colorMultiply(.green)
         
-        AspectVGrid(items: game.numbers, aspectRatio:  aspectRatio) { number in
-            NumberView(number: number, game: game)
-                .aspectRatio(1, contentMode: .fit)
+        GeometryReader { geometry in
+            let aspectRatio = 1 as CGFloat
+            let width = geometry.size.width / Double(game.gameSize)
+            let height = geometry.size.height / Double(game.gameSize)
+            let gridItemSize = min(width, height * aspectRatio)
+                    
+            LazyVGrid(columns: Array(repeating: GridItem(.fixed(gridItemSize), spacing: 0), count: game.gameSize), spacing: 0) {
+                ForEach(game.numbers, id: \.self) { number in
+                    NumberView(number: number, game: game)
+                        .aspectRatio(aspectRatio, contentMode: .fit)
+                }
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height) // Use the full available space
+            .foregroundColor(.pink)
         }
-        .foregroundColor(.pink)
 
         
         Text(game.theResult)

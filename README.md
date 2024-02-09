@@ -25,13 +25,13 @@ Name(Thai)
 
 ### GIF
 > animation การเคลื่อนย้ายตัวเลข และจํานวนครั้งที่ผูัเล่นเคลื่อนย้ายตัวเลข
->> ![]()
+>> ![](./src/MoveAndAnimation.gif)
 > ผลลัพธ์เมื่อชนะ
->> ![]()
+>> ![](./src/Won.gif)
 > เริ่มเล่นใหม่
->> ![]()
-> แนวนอน
->> ![]()
+>> ![](./src/NewGame.gif)
+> Orientation Varients
+>> ![](./src/Orientation%20Varients.jpg)
 
 ### Video demo
-__[Video demo]()__ - google drive link
+__[Video demo](https://drive.google.com/file/d/123o5YaTd5Sslqz1_Qnx-bqyKcJ4NQ-aj/view?usp=share_link)__ - google drive link
