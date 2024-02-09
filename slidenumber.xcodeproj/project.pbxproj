@@ -12,6 +12,7 @@
 		CE9E48B52B6D589C00BC0A9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9E48B42B6D589C00BC0A9A /* Assets.xcassets */; };
 		CE9E48B82B6D589C00BC0A9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9E48B72B6D589C00BC0A9A /* Preview Assets.xcassets */; };
 		CE9E48C02B6D597A00BC0A9A /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E48BF2B6D597A00BC0A9A /* Game.swift */; };
+		CE9E48E62B7658EF00BC0A9A /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E48E52B7658EF00BC0A9A /* AspectVGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		CE9E48B42B6D589C00BC0A9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE9E48B72B6D589C00BC0A9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CE9E48BF2B6D597A00BC0A9A /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		CE9E48E52B7658EF00BC0A9A /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				CE9E48BE2B6D596200BC0A9A /* Models */,
 				CE9E48B02B6D589B00BC0A9A /* slidenumberApp.swift */,
 				CE9E48B22B6D589B00BC0A9A /* ContentView.swift */,
+				CE9E48E52B7658EF00BC0A9A /* AspectVGrid.swift */,
 				CE9E48B42B6D589C00BC0A9A /* Assets.xcassets */,
 				CE9E48B62B6D589C00BC0A9A /* Preview Content */,
 			);
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE9E48E62B7658EF00BC0A9A /* AspectVGrid.swift in Sources */,
 				CE9E48B32B6D589B00BC0A9A /* ContentView.swift in Sources */,
 				CE9E48C02B6D597A00BC0A9A /* Game.swift in Sources */,
 				CE9E48B12B6D589B00BC0A9A /* slidenumberApp.swift in Sources */,

@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var game = Game()
     
+    let spacing = 4 as CGFloat
+    let aspectRatio = 1 as CGFloat
     var body: some View {
     VStack {
         Button("New game") {
@@ -18,15 +20,12 @@ struct ContentView: View {
         .font(.largeTitle)
         .colorMultiply(.green)
         
-        LazyVGrid(columns:
-            [GridItem(), GridItem(),GridItem(), GridItem()]) {
-            ForEach(game.numbers, id: \.self) {number in
-                NumberView(number: number, game: game)
-                    .aspectRatio(1, contentMode: .fit)
-            }
+        AspectVGrid(items: game.numbers, aspectRatio:  aspectRatio) { number in
+            NumberView(number: number, game: game)
+                .aspectRatio(1, contentMode: .fit)
         }
         .foregroundColor(.pink)
-        Spacer()
+
         
         Text(game.theResult)
             .font(.title3)
@@ -55,6 +54,8 @@ struct NumberView: View {
                     base.foregroundColor(.white)
                     base.strokeBorder(lineWidth: 2)
                     Text(number)
+                        .font(.system(size: 20))
+                        .bold()
                 }
                 .gesture(
                     DragGesture(minimumDistance: 10)
@@ -67,8 +68,8 @@ struct NumberView: View {
                             swipeDirection = value.translation.height > 0 ? "Down" : "Up"
                         }
                         // add animation
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            game.move(number, direction: swipeDirection)
+                        withAnimation(.default) {
+                        game.move(number, direction: swipeDirection)
                         }
                     }
                 )
