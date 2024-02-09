@@ -66,8 +66,10 @@ struct NumberView: View {
                             // Vertical swipe
                             swipeDirection = value.translation.height > 0 ? "Down" : "Up"
                         }
-                        // Handle the swipe direction
-                        game.move(number, direction: swipeDirection)
+                        // add animation
+                        withAnimation(.easeInOut(duration: 0.5)) {
+                            game.move(number, direction: swipeDirection)
+                        }
                     }
                 )
             }
